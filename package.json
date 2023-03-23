@@ -1,0 +1,14 @@
+{
+  "name": "anon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Seligmann/anon.git",
+  "author": "Seligmann <zachary.a.seligman@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^1.6.0",
+    "discord-api-types": "^0.37.37",
+    "discord.js": "^14.8.0",
+    "dotenv": "^16.0.3"
+  }
+}
