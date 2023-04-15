@@ -56,20 +56,19 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.on(Events.MessageCreate, (message) => {
-  console.log(`${message.author} sent a message: ${message}`);
   // Handle "?" commands
-  // const isQuestionCommand = message.content.startsWith(prefix);
-  // const questionCommand = message.content.slice(prefix.length).toLowerCase();
-  //
-  // if (isQuestionCommand && questionCommand === "lol") {
-  //   const channel = client.channels
-  //     .fetch(message.channelId)
-  //     .then(async (channel) => {
-  //       if (!channel.sendable) return;
-  //
-  //       await channel.send("hahah");
-  //     });
-  // }
+  const isQuestionCommand = message.content.startsWith(prefix);
+  const questionCommand = message.content.slice(prefix.length).toLowerCase();
+
+  if (isQuestionCommand && questionCommand === "lol") {
+    const channel = client.channels
+      .fetch(message.channelId)
+      .then(async (channel) => {
+        if (!channel.sendable) return;
+
+        await channel.send("hahah");
+      });
+  }
 });
 
 client.login(process.env.DISCORD_TOKEN);
