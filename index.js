@@ -2,8 +2,6 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { Client, Collection, Events, GatewayIntentBits } = require("discord.js");
 const dotenv = require("dotenv");
-const gateway = require("discord-api-types/gateway/index.mjs");
-const Gateway = require("discord-api-types/gateway/index.mjs");
 
 dotenv.config();
 
@@ -33,10 +31,7 @@ client.once(Events.ClientReady, () => {
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
-  if (interaction.message)
-    if (!interaction.isChatInputCommand())
-      // Handle slash commands
-      return;
+  if (!interaction.isChatInputCommand()) return;
 
   const command = client.commands.get(interaction.commandName);
 
@@ -60,13 +55,21 @@ client.on(Events.InteractionCreate, async (interaction) => {
   }
 });
 
-client.on("message", (message) => {
-  if (
-    message.content.startsWith(prefix) &&
-    message.content.slice(prefix.length).toLowerCase() === "lol"
-  ) {
-    message.channel.send("hahaahahahh");
-  }
+client.on(Events.MessageCreate, (message) => {
+  console.log(`${message.author} sent a message: ${message}`);
+  // Handle "?" commands
+  // const isQuestionCommand = message.content.startsWith(prefix);
+  // const questionCommand = message.content.slice(prefix.length).toLowerCase();
+  //
+  // if (isQuestionCommand && questionCommand === "lol") {
+  //   const channel = client.channels
+  //     .fetch(message.channelId)
+  //     .then(async (channel) => {
+  //       if (!channel.sendable) return;
+  //
+  //       await channel.send("hahah");
+  //     });
+  // }
 });
 
 client.login(process.env.DISCORD_TOKEN);
