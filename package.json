@@ -5,10 +5,17 @@
   "repository": "git@github.com:Seligmann/anon.git",
   "author": "Seligmann <zachary.a.seligman@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon .",
+    "start": "node ."
+  },
   "dependencies": {
     "@discordjs/rest": "^1.6.0",
     "discord-api-types": "^0.37.37",
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }

@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const client = new Client({intents: [GatewayIntentBits.Guilds]});
+const prefix = '?';
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -37,6 +38,12 @@ client.on(Events.InteractionCreate, async interaction => {
         } else {
             await interaction.reply({content: 'There was an error while executing this command!', ephemeral: true});
         }
+    }
+});
+
+client.on('message', message => {
+    if (message.content.startsWith(prefix) && message.content.slice(prefix.length).toLowerCase() === 'lol') {
+        message.channel.send('hahaahahahh');
     }
 });
 
