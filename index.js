@@ -109,7 +109,6 @@ client.on(Events.MessageCreate, async (message) => {
         name: commandToDelete,
       },
     });
-
     client.channels.fetch(message.channelId).then(async (channel) => {
       await channel.send(
         `${commandToDelete} command has been successfully deleted.`
